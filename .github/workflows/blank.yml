@@ -1,0 +1,31 @@
+name: deploy to 3 cities
+
+on: [ push ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy: 
+      matrix:
+        city: [Mumbai,Kuala_Lumpur,London]
+
+    steps:
+      - uses: action/checkout@v4
+
+      - name: Deploy to ${{ matrix.city }}
+        env:
+          CITY_IP: |
+            ${{ 
+              matrix.city == "Mumbai" && "1.2.3.4" ||
+              matrix.city == "Kuala_Lumpur" && "10.20.30.40" ||
+              "3.110.3.3"
+            }}
+
+        run: |
+          echo "Deploying index.html to ${CITY_IP}"
+          echo "${{ matrix.city }} server updated!"
+          
+          
+          
+            
+              
