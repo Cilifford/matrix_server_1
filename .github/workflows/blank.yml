@@ -16,14 +16,14 @@ jobs:
         env:
           CITY_IP: |
             ${{ 
-              matrix.city == "Mumbai" && "1.2.3.4" ||
-              matrix.city == "Kuala_Lumpur" && "10.20.30.40" ||
-              "3.110.3.3"
+              matrix.city == 'Mumbai' && '1.2.3.4' ||
+              matrix.city == 'Kuala_Lumpur' && '10.20.30.40' ||
+              '3.110.3.3'
             }}
 
         run: |
-          echo "Deploying index.html to ${CITY_IP}"
-          echo "${{ matrix.city }} server updated!"
+          echo 'Deploying index.html to ${CITY_IP}'
+          echo '${{ matrix.city }} server updated!'
           
           
           
